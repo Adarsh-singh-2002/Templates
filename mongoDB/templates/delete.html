@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Document</title>
+</head>
+<body>
+    <h1>Delete Document</h1>
+    <p>Are you sure you want to delete the document with ID: {{ document_id }}?</p>
+    <form action="/delete/{{ document_id }}" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>

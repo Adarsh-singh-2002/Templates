@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Documents</title>
+</head>
+<body>
+    <h1>Read Documents</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        {% for document in documents %}
+        <tr>
+            <td>{{ document.name }}</td>
+            <td>{{ document.age }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
