@@ -1,0 +1,182 @@
+// Import the required library
+const MongoClient = require('mongodb').MongoClient;
+
+// Connect to the MongoDB server
+const uri = 'mongodb://localhost:27017/';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Access the database and collection
+client.connect(err => {
+  if (err) throw err;
+  const db = client.db('your_database');
+  const collection = db.collection('your_collection');
+
+  // Insert a single document
+  const document = { name: 'John', age: 25 };
+  collection.insertOne(document);
+
+  // Insert multiple documents
+  const documents = [{ name: 'Alice', age: 30 }, { name: 'Bob', age: 35 }];
+  collection.insertMany(documents);
+
+  // Close the connection
+  client.close();
+});
+
+////////////////////////////////////////////////////////////////////////////////////
+
+// Import the required library
+const MongoClient = require('mongodb').MongoClient;
+
+// Connect to the MongoDB server
+const uri = 'mongodb://localhost:27017/';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Access the database and collection
+client.connect(err => {
+  if (err) throw err;
+  const db = client.db('your_database');
+  const collection = db.collection('your_collection');
+
+  // Sort documents in ascending order based on a field
+  const ascendingSort = collection.find().sort({ field_name: 1 });
+
+  // Sort documents in descending order based on a field
+  const descendingSort = collection.find().sort({ field_name: -1 });
+
+  // Close the connection
+  client.close();
+});
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+// Import the required library
+const MongoClient = require('mongodb').MongoClient;
+
+// Connect to the MongoDB server
+const uri = 'mongodb://localhost:27017/';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Access the database and collection
+client.connect(err => {
+  if (err) throw err;
+  const db = client.db('your_database');
+  const collection = db.collection('your_collection');
+
+  // Find all documents in a collection
+  const allDocuments = collection.find();
+
+  // Find documents based on a condition
+  const condition = { field_name: 'value' };
+  const filteredDocuments = collection.find(condition);
+
+  // Find documents with projection (selected fields)
+  const projection = { field_name1: 1, field_name2: 1 };
+  const projectedDocuments = collection.find({}, projection);
+
+  // Close the connection
+  client.close();
+});
+
+///////////////////////////////////////////////////////////////////
+
+// Import the required library
+const MongoClient = require('mongodb').MongoClient;
+
+// Connect to the MongoDB server
+const uri = 'mongodb://localhost:27017/';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Access the database and collection
+client.connect(err => {
+  if (err) throw err;
+  const db = client.db('your_database');
+  const collection = db.collection('your_collection');
+
+  // Update a single document
+  collection.updateOne(
+    { field_name: 'value' },
+    { $set: { field_to_update: 'new_value' } }
+  );
+
+  // Update multiple documents
+  collection.updateMany(
+    { field_name: 'value' },
+    { $set: { field_to_update: 'new_value' } }
+  );
+
+  // Close the connection
+  client.close();
+});
+
+//////////////////////////////////////////////////////////////
+
+// Import the required library
+const MongoClient = require('mongodb').MongoClient;
+
+// Connect to the MongoDB server
+const uri = 'mongodb://localhost:27017/';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Access the database and collection
+client.connect(err => {
+  if (err) throw err;
+  const db = client.db('your_database');
+  const collection = db.collection('your_collection');
+
+  // Delete a single document
+  collection.deleteOne({ field_name: 'value' });
+
+  // Delete multiple documents
+  collection.deleteMany({ field_name: 'value' });
+
+  // Close the connection
+  client.close();
+});
+
+
+////////////////////////////////////////////////////////////////
+
+// Using comparison operators
+collection.find({ field_name: { $gt: 10 } });  // Greater than
+collection.find({ field_name: { $lt: 10 } });  // Less than
+collection.find({ field_name: { $gte: 10 } });  // Greater than or equal to
+collection.find({ field_name: { $lte: 10 } });  // Less than or equal to
+collection.find({ field_name: { $eq: 10 } });  // Equal to
+collection.find({ field_name: { $ne: 10 } });  // Not equal to
+
+
+///////////////////////////////////////////////////////////////
+
+// Using logical operators
+collection.find({ $or: [{ field1: value1 }, { field2: value2 }] });  // Logical OR
+collection.find({ $and: [{ field1: value1 }, { field2: value2 }] });  // Logical AND
+collection.find({ field1: value1, field2: value2 });  // Implicit AND
+
+
+////////////////////////////////////////////////////////////////////
+
+// Create an index
+collection.createIndex({ field_name: 1 });
+
+// List all indexes in a collection
+collection.listIndexes().toArray((err, indexes) => {
+  if (err) throw err;
+  console.log(indexes);
+});
+
+/////////////////////////////////////////////////////////////////////
+
+// Create a collection
+db.createCollection('new_collection');
+
+// List all collections in a database
+db.listCollections().toArray((err, collections) => {
+  if (err) throw err;
+  console.log(collections);
+});
+
+
+

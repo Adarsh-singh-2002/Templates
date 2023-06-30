@@ -1,0 +1,154 @@
+# Import the required libraries
+from pymongo import MongoClient
+
+# Connect to the MongoDB server
+client = MongoClient('mongodb://localhost:27017/')
+
+# Access the database
+db = client['your_database']
+
+# Access the collection
+collection = db['your_collection']
+
+# Insert a single document
+document = {'name': 'John', 'age': 25}
+collection.insert_one(document)
+
+# Insert multiple documents
+documents = [{'name': 'Alice', 'age': 30}, {'name': 'Bob', 'age': 35}]
+collection.insert_many(documents)
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+# Import the required libraries
+from pymongo import MongoClient
+
+# Connect to the MongoDB server
+client = MongoClient('mongodb://localhost:27017/')
+
+# Access the database
+db = client['your_database']
+
+# Access the collection
+collection = db['your_collection']
+
+# Sort documents in ascending order based on a field
+ascending_sort = collection.find().sort('field_name', 1)
+
+# Sort documents in descending order based on a field
+descending_sort = collection.find().sort('field_name', -1)
+
+/////////////////////////////////////////////////////////////////////
+
+# Import the required libraries
+from pymongo import MongoClient
+
+# Connect to the MongoDB server
+client = MongoClient('mongodb://localhost:27017/')
+
+# Access the database
+db = client['your_database']
+
+# Access the collection
+collection = db['your_collection']
+
+# Find all documents in a collection
+all_documents = collection.find()
+
+# Find documents based on a condition
+condition = {'field_name': 'value'}
+filtered_documents = collection.find(condition)
+
+# Find documents with projection (selected fields)
+projection = {'field_name1': 1, 'field_name2': 1}
+projected_documents = collection.find({}, projection)
+
+//////////////////////////////////////////////////////////////////////////
+
+# Import the required libraries
+from pymongo import MongoClient
+
+# Connect to the MongoDB server
+client = MongoClient('mongodb://localhost:27017/')
+
+# Access the database
+db = client['your_database']
+
+# Access the collection
+collection = db['your_collection']
+
+# Update a single document
+collection.update_one(
+    {'field_name': 'value'},
+    {'$set': {'field_to_update': 'new_value'}}
+)
+
+# Update multiple documents
+collection.update_many(
+    {'field_name': 'value'},
+    {'$set': {'field_to_update': 'new_value'}}
+)
+
+//////////////////////////////////////////////////////////////////////////
+
+# Import the required libraries
+from pymongo import MongoClient
+
+# Connect to the MongoDB server
+client = MongoClient('mongodb://localhost:27017/')
+
+# Access the database
+db = client['your_database']
+
+# Access the collection
+collection = db['your_collection']
+
+# Delete a single document
+collection.delete_one({'field_name': 'value'})
+
+# Delete multiple documents
+collection.delete_many({'field_name': 'value'})
+
+
+///////////////////////////////////////////////////////////////////////////
+
+# Using comparison operators
+collection.find({'field_name': {'$gt': 10}})  # Greater than
+collection.find({'field_name': {'$lt': 10}})  # Less than
+collection.find({'field_name': {'$gte': 10}})  # Greater than or equal to
+collection.find({'field_name': {'$lte': 10}})  # Less than or equal to
+collection.find({'field_name': {'$eq': 10}})  # Equal to
+collection.find({'field_name': {'$ne': 10}})  # Not equal to
+
+/////////////////////////////////////////////////////////////////////
+
+# Using logical operators
+collection.find({'$or': [{'field1': value1}, {'field2': value2}]})  # Logical OR
+collection.find({'$and': [{'field1': value1}, {'field2': value2}]})  # Logical AND
+collection.find({'field1': value1, 'field2': value2})  # Implicit AND
+
+////////////////////////////////////////////////////////////
+
+# Create an index
+collection.create_index('field_name')
+
+# List all indexes in a collection
+indexes = collection.list_indexes()
+for index in indexes:
+    print(index)
+
+
+////////////////////////////////////////////////////////
+
+# Create a collection
+db.create_collection('new_collection')
+
+# List all collections in a database
+collections = db.list_collection_names()
+for collection in collections:
+    print(collection)
+
+
+///////////////////////////////////////////////////////////////
